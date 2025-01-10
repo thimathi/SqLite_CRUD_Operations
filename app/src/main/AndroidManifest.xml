@@ -13,12 +13,22 @@
         android:theme="@style/Theme.SqLite_CRUD_Operations"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".UpdateActivity"
+            android:label="Update Book"
+            android:parentActivityName=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="false"
+            android:label="Add Book"
+            android:parentActivityName=".MainActivity2" />
+        <activity
+            android:name=".MainActivity2"
             android:exported="true"
+            android:label="Book Library"
             android:theme="@style/Theme.SqLite_CRUD_Operations">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
