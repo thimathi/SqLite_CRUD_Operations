@@ -1,0 +1,1359 @@
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/SecondFragment.java
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/SecondFragment.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/SecondFragment.java
+deleted file mode 100644
+--- a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/SecondFragment.java	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,44 +0,0 @@
+-package com.thimathi.manahara.sqlite_crud_operations;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-import androidx.annotation.NonNull;
+-import androidx.fragment.app.Fragment;
+-import androidx.navigation.fragment.NavHostFragment;
+-
+-import com.thimathi.manahara.sqlite_crud_operations.databinding.FragmentSecondBinding;
+-
+-public class SecondFragment extends Fragment {
+-
+-    private FragmentSecondBinding binding;
+-
+-    @Override
+-    public View onCreateView(
+-            @NonNull LayoutInflater inflater, ViewGroup container,
+-            Bundle savedInstanceState
+-    ) {
+-
+-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+-        return binding.getRoot();
+-
+-    }
+-
+-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+-        super.onViewCreated(view, savedInstanceState);
+-
+-        binding.buttonSecond.setOnClickListener(v ->
+-                NavHostFragment.findNavController(SecondFragment.this)
+-                        .navigate(R.id.action_SecondFragment_to_FirstFragment)
+-        );
+-    }
+-
+-    @Override
+-    public void onDestroyView() {
+-        super.onDestroyView();
+-        binding = null;
+-    }
+-
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_second.xml
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_second.xml b/app/src/main/res/layout/fragment_second.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/fragment_second.xml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,35 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".SecondFragment">
+-
+-    <androidx.constraintlayout.widget.ConstraintLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:padding="16dp">
+-
+-        <Button
+-            android:id="@+id/button_second"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="@string/previous"
+-            app:layout_constraintBottom_toTopOf="@id/textview_second"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="parent" />
+-
+-        <TextView
+-            android:id="@+id/textview_second"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="16dp"
+-            android:text="@string/lorem_ipsum"
+-            app:layout_constraintBottom_toBottomOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toBottomOf="@id/button_second" />
+-    </androidx.constraintlayout.widget.ConstraintLayout>
+-</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/FirstFragment.java
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/FirstFragment.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/FirstFragment.java
+deleted file mode 100644
+--- a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/FirstFragment.java	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,44 +0,0 @@
+-package com.thimathi.manahara.sqlite_crud_operations;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-import androidx.annotation.NonNull;
+-import androidx.fragment.app.Fragment;
+-import androidx.navigation.fragment.NavHostFragment;
+-
+-import com.thimathi.manahara.sqlite_crud_operations.databinding.FragmentFirstBinding;
+-
+-public class FirstFragment extends Fragment {
+-
+-    private FragmentFirstBinding binding;
+-
+-    @Override
+-    public View onCreateView(
+-            @NonNull LayoutInflater inflater, ViewGroup container,
+-            Bundle savedInstanceState
+-    ) {
+-
+-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+-        return binding.getRoot();
+-
+-    }
+-
+-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+-        super.onViewCreated(view, savedInstanceState);
+-
+-        binding.buttonFirst.setOnClickListener(v ->
+-                NavHostFragment.findNavController(FirstFragment.this)
+-                        .navigate(R.id.action_FirstFragment_to_SecondFragment)
+-        );
+-    }
+-
+-    @Override
+-    public void onDestroyView() {
+-        super.onDestroyView();
+-        binding = null;
+-    }
+-
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/activity_main.xml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,33 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:fitsSystemWindows="true"
+-    tools:context=".MainActivity">
+-
+-    <com.google.android.material.appbar.AppBarLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:fitsSystemWindows="true">
+-
+-        <com.google.android.material.appbar.MaterialToolbar
+-            android:id="@+id/toolbar"
+-            android:layout_width="match_parent"
+-            android:layout_height="?attr/actionBarSize" />
+-
+-    </com.google.android.material.appbar.AppBarLayout>
+-
+-    <include layout="@layout/content_main" />
+-
+-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+-        android:id="@+id/fab"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_gravity="bottom|end"
+-        android:layout_marginEnd="@dimen/fab_margin"
+-        android:layout_marginBottom="16dp"
+-        app:srcCompat="@android:drawable/ic_dialog_email" />
+-
+-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity.java
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity.java	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,77 +0,0 @@
+-package com.thimathi.manahara.sqlite_crud_operations;
+-
+-import android.os.Bundle;
+-
+-import com.google.android.material.snackbar.Snackbar;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.view.View;
+-
+-import androidx.navigation.NavController;
+-import androidx.navigation.Navigation;
+-import androidx.navigation.ui.AppBarConfiguration;
+-import androidx.navigation.ui.NavigationUI;
+-
+-import com.thimathi.manahara.sqlite_crud_operations.databinding.ActivityMainBinding;
+-
+-import android.view.Menu;
+-import android.view.MenuItem;
+-
+-public class MainActivity extends AppCompatActivity {
+-
+-    private AppBarConfiguration appBarConfiguration;
+-    private ActivityMainBinding binding;
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-
+-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+-        setContentView(binding.getRoot());
+-
+-        setSupportActionBar(binding.toolbar);
+-
+-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+-
+-        binding.fab.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View view) {
+-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+-                        .setAnchorView(R.id.fab)
+-                        .setAction("Action", null).show();
+-            }
+-        });
+-    }
+-
+-    @Override
+-    public boolean onCreateOptionsMenu(Menu menu) {
+-        // Inflate the menu; this adds items to the action bar if it is present.
+-        getMenuInflater().inflate(R.menu.menu_main, menu);
+-        return true;
+-    }
+-
+-    @Override
+-    public boolean onOptionsItemSelected(MenuItem item) {
+-        // Handle action bar item clicks here. The action bar will
+-        // automatically handle clicks on the Home/Up button, so long
+-        // as you specify a parent activity in AndroidManifest.xml.
+-        int id = item.getItemId();
+-
+-        //noinspection SimplifiableIfStatement
+-        if (id == R.id.action_settings) {
+-            return true;
+-        }
+-
+-        return super.onOptionsItemSelected(item);
+-    }
+-
+-    @Override
+-    public boolean onSupportNavigateUp() {
+-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+-        return NavigationUI.navigateUp(navController, appBarConfiguration)
+-                || super.onSupportNavigateUp();
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/content_main.xml
+===================================================================
+diff --git a/app/src/main/res/layout/content_main.xml b/app/src/main/res/layout/content_main.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/content_main.xml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+-
+-    <fragment
+-        android:id="@+id/nav_host_fragment_content_main"
+-        android:name="androidx.navigation.fragment.NavHostFragment"
+-        android:layout_width="0dp"
+-        android:layout_height="0dp"
+-        app:defaultNavHost="true"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:navGraph="@navigation/nav_graph" />
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_first.xml
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_first.xml b/app/src/main/res/layout/fragment_first.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/fragment_first.xml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ /dev/null	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
+@@ -1,35 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".FirstFragment">
+-
+-    <androidx.constraintlayout.widget.ConstraintLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:padding="16dp">
+-
+-        <Button
+-            android:id="@+id/button_first"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="@string/next"
+-            app:layout_constraintBottom_toTopOf="@id/textview_first"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="parent" />
+-
+-        <TextView
+-            android:id="@+id/textview_first"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="16dp"
+-            android:text="@string/lorem_ipsum"
+-            app:layout_constraintBottom_toBottomOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toBottomOf="@id/button_first" />
+-    </androidx.constraintlayout.widget.ConstraintLayout>
+-</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+Index: app/src/main/res/layout/my_row.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/my_row.xml b/app/src/main/res/layout/my_row.xml
+new file mode 100644
+--- /dev/null	(date 1736446164169)
++++ b/app/src/main/res/layout/my_row.xml	(date 1736446164169)
+@@ -0,0 +1,69 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:orientation="vertical"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content">
++
++    <androidx.cardview.widget.CardView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:layout_width="match_parent"
++            android:layout_height="101dp"
++            android:padding="12dp">
++
++            <TextView
++                android:id="@+id/book_id_text"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="1"
++                android:textColor="#000"
++                android:textSize="45sp"
++                android:textStyle="bold"
++                tools:layout_editor_absoluteX="1dp"
++                tools:ignore="MissingConstraints" />
++
++            <TextView
++                android:id="@+id/book_title_text"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginStart="28dp"
++                android:layout_marginTop="4dp"
++                android:text="Title 1"
++                android:textColor="#000"
++                android:textSize="20sp"
++                android:textStyle="bold"
++                app:layout_constraintStart_toEndOf="@id/book_id_text"
++                app:layout_constraintTop_toTopOf="@id/book_id_text" />
++
++            <TextView
++                android:id="@+id/book_author_text"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="28dp"
++                android:text="Author 1"
++                android:textColor="#000"
++                android:textSize="20sp"
++                android:textStyle="bold"
++                app:layout_constraintStart_toStartOf="@+id/book_title_text"
++                app:layout_constraintTop_toTopOf="@id/book_title_text" />
++
++            <TextView
++                android:id="@+id/book_pages_txt"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginEnd="24dp"
++                android:text="120"
++                android:textSize="20sp"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent"
++                app:layout_constraintVertical_bias="0.0" />
++
++
++        </androidx.constraintlayout.widget.ConstraintLayout>
++    </androidx.cardview.widget.CardView>
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/CustomAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/CustomAdapter.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/CustomAdapter.java
+new file mode 100644
+--- /dev/null	(date 1736523585003)
++++ b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/CustomAdapter.java	(date 1736523585003)
+@@ -0,0 +1,79 @@
++package com.thimathi.manahara.sqlite_crud_operations;
++
++import android.annotation.SuppressLint;
++import android.app.Activity;
++import android.content.ContentValues;
++import android.content.Context;
++import android.content.Intent;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.LinearLayout;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++
++import java.util.ArrayList;
++
++public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
++    Context context;
++    Activity activity;
++    ArrayList book_id, book_title, book_author, book_pages;
++
++    CustomAdapter(Activity activity, Context context, ArrayList book_id, ArrayList book_title, ArrayList book_author, ArrayList book_pages){
++        this.activity = activity;
++        this.context = context;
++        this.book_id = book_id;
++        this.book_author = book_author;
++        this.book_title = book_title;
++        this.book_pages = book_pages;
++
++    }
++    @NonNull
++    @Override
++    public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
++        LayoutInflater inflater = LayoutInflater.from(context);
++        View view = inflater.inflate(R.layout.my_row, viewGroup, false);
++        return new MyViewHolder(view);
++    }
++
++    @SuppressLint("RecyclerView")
++    @Override
++    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder myViewHolder, int i) {
++
++        myViewHolder.book_id_txt.setText(String.valueOf(book_id.get(i)));
++        myViewHolder.book_title_txt.setText(String.valueOf(book_title.get(i)));
++        myViewHolder.book_author_txt.setText(String.valueOf(book_author.get(i)));
++        myViewHolder.book_pages_txt.setText(String.valueOf(book_pages.get(i)));
++        myViewHolder.mainLayout.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent = new Intent(context, UpdateActivity.class);
++                intent.putExtra("id", String.valueOf(book_id.get(i)));
++                intent.putExtra("title", String.valueOf(book_title.get(i)));
++                intent.putExtra("author", String.valueOf(book_author.get(i)));
++                intent.putExtra("pages", String.valueOf(book_pages.get(i)));
++                activity.startActivityForResult(intent,1);
++            }
++        });
++    }
++
++    @Override
++    public int getItemCount() {
++        return book_id.size();
++    }
++
++    public class MyViewHolder extends RecyclerView.ViewHolder {
++        TextView book_id_txt, book_title_txt, book_author_txt, book_pages_txt;
++        LinearLayout mainLayout;
++        public MyViewHolder(@NonNull View itemView) {
++            super(itemView);
++            book_id_txt = itemView.findViewById(R.id.book_id_text);
++            book_title_txt = itemView.findViewById(R.id.book_title_text);
++            book_author_txt = itemView.findViewById(R.id.book_author_text);
++            book_pages_txt = itemView.findViewById(R.id.book_pages_txt);
++            mainLayout = itemView.findViewById(R.id.main);
++        }
++    }
++}
+Index: app/src/main/res/drawable/baseline_auto_delete_24.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/baseline_auto_delete_24.xml b/app/src/main/res/drawable/baseline_auto_delete_24.xml
+new file mode 100644
+--- /dev/null	(date 1736525621312)
++++ b/app/src/main/res/drawable/baseline_auto_delete_24.xml	(date 1736525621312)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#FFFFFF" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
++      
++    <path android:fillColor="@android:color/white" android:pathData="M15,2l-3.5,0l-1,-1l-5,0l-1,1l-3.5,0l0,2l14,0z"/>
++      
++    <path android:fillColor="@android:color/white" android:pathData="M16,9c-0.7,0 -1.37,0.1 -2,0.29V5H2v12c0,1.1 0.9,2 2,2h5.68c1.12,2.36 3.53,4 6.32,4c3.87,0 7,-3.13 7,-7C23,12.13 19.87,9 16,9zM16,21c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5s5,2.24 5,5S18.76,21 16,21z"/>
++      
++    <path android:fillColor="@android:color/white" android:pathData="M16.5,12l-1.5,0l0,5l3.6,2.1l0.8,-1.2l-2.9,-1.7z"/>
++    
++</vector>
+Index: app/src/main/res/layout/activity_main2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main2.xml b/app/src/main/res/layout/activity_main2.xml
+new file mode 100644
+--- /dev/null	(date 1736519621824)
++++ b/app/src/main/res/layout/activity_main2.xml	(date 1736519621824)
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".MainActivity2">
++
++    <com.google.android.material.floatingactionbutton.FloatingActionButton
++        android:id="@+id/update_button"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="28dp"
++        android:layout_marginBottom="28dp"
++        android:clickable="true"
++        android:contentDescription="TODO"
++        android:focusable="true"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:srcCompat="@drawable/ic_add" />
++
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/recycle_view"
++        android:layout_width="409dp"
++        android:layout_height="729dp"
++        android:layout_marginStart="1dp"
++        android:layout_marginTop="1dp"
++        android:layout_marginEnd="1dp"
++        android:layout_marginBottom="1dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.0" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/menu/my_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/my_menu.xml b/app/src/main/res/menu/my_menu.xml
+new file mode 100644
+--- /dev/null	(date 1736526270310)
++++ b/app/src/main/res/menu/my_menu.xml	(date 1736526270310)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="utf-8"?>
++<menu xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto">
++
++    <item
++        android:id="@+id/delete_all"
++        android:title="Delete All"
++        android:icon="@drawable/baseline_auto_delete_24"
++        app:showAsAction="always" />
++
++</menu>
+\ No newline at end of file
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MyDatabaseHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MyDatabaseHelper.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MyDatabaseHelper.java
+new file mode 100644
+--- /dev/null	(date 1736526471488)
++++ b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MyDatabaseHelper.java	(date 1736526471488)
+@@ -0,0 +1,148 @@
++package com.thimathi.manahara.sqlite_crud_operations;
++
++import android.content.ContentValues;
++import android.content.Context;
++import android.database.Cursor;
++import android.database.sqlite.SQLiteDatabase;
++import android.database.sqlite.SQLiteOpenHelper;
++import android.widget.Toast;
++
++import androidx.annotation.Nullable;
++
++public class MyDatabaseHelper extends SQLiteOpenHelper {
++    Context context;
++    static final String DATABASE_NAME = "BookLibrary.db";
++    static final int DATABASE_VERSION = 1;
++    static final String TABLE_NAME = "my_library";
++    static final String COLUMN_ID = "_id";
++    static final String COLUMN_TITLE = "book_title";
++    static final String COLUMN_AUTHOR = "book_author";
++    static final String COLUMN_PAGES = "book_pages";
++    public MyDatabaseHelper(@Nullable Context context) {
++        super(context, DATABASE_NAME, null, DATABASE_VERSION);
++        this.context = context;
++    }
++
++    /**
++     * Called when the database is created for the first time. This is where the
++     * creation of tables and the initial population of the tables should happen.
++     *
++     * @param db The database.
++     */
++    @Override
++    public void onCreate(SQLiteDatabase db) {
++        String query;
++        query = "CREATE TABLE " + TABLE_NAME +
++                " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
++                COLUMN_TITLE + " TEXT, " +
++                COLUMN_AUTHOR + " TEXT, " +
++                COLUMN_PAGES + " INTEGER);";
++        db.execSQL(query);
++    }
++
++    /**
++     * Called when the database needs to be upgraded. The implementation
++     * should use this method to drop tables, add tables, or do anything else it
++     * needs to upgrade to the new schema version.
++     *
++     * <p>
++     * The SQLite ALTER TABLE documentation can be found
++     * <a href="http://sqlite.org/lang_altertable.html">here</a>. If you add new columns
++     * you can use ALTER TABLE to insert them into a live table. If you rename or remove columns
++     * you can use ALTER TABLE to rename the old table, then create the new table and then
++     * populate the new table with the contents of the old table.
++     * </p><p>
++     * This method executes within a transaction.  If an exception is thrown, all changes
++     * will automatically be rolled back.
++     * </p>
++     * <p>
++     * <em>Important:</em> You should NOT modify an existing migration step from version X to X+1
++     * once a build has been released containing that migration step.  If a migration step has an
++     * error and it runs on a device, the step will NOT re-run itself in the future if a fix is made
++     * to the migration step.</p>
++     * <p>For example, suppose a migration step renames a database column from {@code foo} to
++     * {@code bar} when the name should have been {@code baz}.  If that migration step is released
++     * in a build and runs on a user's device, the column will be renamed to {@code bar}.  If the
++     * developer subsequently edits this same migration step to change the name to {@code baz} as
++     * intended, the user devices which have already run this step will still have the name
++     * {@code bar}.  Instead, a NEW migration step should be created to correct the error and rename
++     * {@code bar} to {@code baz}, ensuring the error is corrected on devices which have already run
++     * the migration step with the error.</p>
++     *
++     * @param db         The database.
++     * @param oldVersion The old database version.
++     * @param newVersion The new database version.
++     */
++    @Override
++    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
++        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
++        onCreate(db);
++    }
++
++    void addBook(String title, String author, int pages) {
++        SQLiteDatabase db = this.getWritableDatabase();
++        ContentValues cv = new ContentValues();
++
++        cv.put(COLUMN_TITLE, title);
++        cv.put(COLUMN_AUTHOR, author);
++        cv.put(COLUMN_PAGES, pages);
++        long result;
++        result = db.insert(TABLE_NAME, null, cv);
++        if (result == -1){
++            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
++        }
++        else {
++            Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show();
++        }
++    }
++
++    Cursor readAllData(){
++        String query;
++        query = "SELECT * FROM " + TABLE_NAME;
++        SQLiteDatabase db = this.getReadableDatabase();
++
++        Cursor cursor = null;
++        if (db != null){
++            cursor = db.rawQuery(query, null);
++        }
++        else {
++            Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
++        }
++        return cursor;
++    }
++
++    void updateData(String row_id, String title_input, String author_input, String pages_input){
++        SQLiteDatabase db = this.getWritableDatabase();
++        ContentValues cv = new ContentValues();
++
++        cv.put(COLUMN_TITLE, title_input);
++        cv.put(COLUMN_AUTHOR, author_input);
++        cv.put(COLUMN_PAGES, pages_input);
++
++        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
++        if (result == -1){
++            Toast.makeText(context, "Failed Updated", Toast.LENGTH_SHORT).show();
++        }
++        else{
++            Toast.makeText(context, "Successfully Updated", Toast.LENGTH_SHORT).show();
++        }
++
++    }
++
++    void deleteOneRow(String row_id){
++        SQLiteDatabase database = this.getWritableDatabase();
++        long result;
++        result = database.delete(TABLE_NAME, "_id=?", new String[]{row_id});
++        if (result == -1){
++            Toast.makeText(context, "Failed Deleted", Toast.LENGTH_SHORT).show();
++        }
++        else {
++            Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_SHORT).show();
++        }
++    }
++
++    void deleteAllData(){
++        SQLiteDatabase database = this.getWritableDatabase();
++        database.execSQL("DELETE FROM " + TABLE_NAME);
++    }
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\" defaultProject=\"true\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ b/.idea/vcs.xml	(date 1736443270355)
+@@ -1,4 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="VcsDirectoryMappings" defaultProject="true" />
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.thimathi.manahara.sqlite_crud_operations\"\r\n    compileSdk = 34\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.thimathi.manahara.sqlite_crud_operations\"\r\n        minSdk = 24\r\n        targetSdk = 34\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_11\r\n        targetCompatibility = JavaVersion.VERSION_11\r\n    }\r\n    buildFeatures {\r\n        viewBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation(libs.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.constraintlayout)\r\n    implementation(libs.navigation.fragment)\r\n    implementation(libs.navigation.ui)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.ext.junit)\r\n    androidTestImplementation(libs.espresso.core)\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ b/app/build.gradle.kts	(date 1736432603325)
+@@ -14,6 +14,7 @@
+         versionName = "1.0"
+ 
+         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
++        vectorDrawables.useSupportLibrary = true
+     }
+ 
+     buildTypes {
+@@ -41,7 +42,11 @@
+     implementation(libs.constraintlayout)
+     implementation(libs.navigation.fragment)
+     implementation(libs.navigation.ui)
++    implementation(libs.activity)
++    implementation(libs.recyclerview)
+     testImplementation(libs.junit)
+     androidTestImplementation(libs.ext.junit)
+     androidTestImplementation(libs.espresso.core)
++    implementation("com.google.android.material:material:1.7.0")
++
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_update.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_update.xml b/app/src/main/res/layout/activity_update.xml
+new file mode 100644
+--- /dev/null	(date 1736519677503)
++++ b/app/src/main/res/layout/activity_update.xml	(date 1736519677503)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".UpdateActivity">
++
++
++    <EditText
++        android:id="@+id/title_input2"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="150dp"
++        android:ems="10"
++        android:hint="Book Title"
++        android:inputType="text"
++        android:minHeight="48dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <EditText
++        android:id="@+id/author_input2"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="16dp"
++        android:ems="10"
++        android:hint="Book Author"
++        android:inputType="text"
++        android:minHeight="48dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/title_input2" />
++
++    <EditText
++        android:id="@+id/pages_input2"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="16dp"
++        android:ems="10"
++        android:hint="Number of Pages"
++        android:inputType="text"
++        android:minHeight="48dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/author_input2" />
++
++    <Button
++        android:id="@+id/update_button"
++        android:layout_width="match_parent"
++        android:layout_height="70dp"
++        android:layout_marginTop="40dp"
++        android:text="Update Book"
++        android:textAllCaps="false"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/pages_input2" />
++
++    <Button
++        android:id="@+id/delete_button"
++        android:layout_width="match_parent"
++        android:layout_height="70dp"
++        android:text="Delete Book"
++        android:textAllCaps="false"
++        android:textSize="20sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/update_button" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.SqLite_CRUD_Operations\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\"\r\n            android:theme=\"@style/Theme.SqLite_CRUD_Operations\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ b/app/src/main/AndroidManifest.xml	(date 1736523758996)
+@@ -13,12 +13,22 @@
+         android:theme="@style/Theme.SqLite_CRUD_Operations"
+         tools:targetApi="31">
+         <activity
+-            android:name=".MainActivity"
++            android:name=".UpdateActivity"
++            android:label="Update Book"
++            android:parentActivityName=".MainActivity2"
++            android:exported="false" />
++        <activity
++            android:name=".AddActivity"
++            android:exported="false"
++            android:label="Add Book"
++            android:parentActivityName=".MainActivity2" />
++        <activity
++            android:name=".MainActivity2"
+             android:exported="true"
++            android:label="Book Library"
+             android:theme="@style/Theme.SqLite_CRUD_Operations">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+-
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/UpdateActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/UpdateActivity.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/UpdateActivity.java
+new file mode 100644
+--- /dev/null	(date 1736524750475)
++++ b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/UpdateActivity.java	(date 1736524750475)
+@@ -0,0 +1,100 @@
++package com.thimathi.manahara.sqlite_crud_operations;
++
++import android.content.DialogInterface;
++import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.Toast;
++
++import androidx.activity.EdgeToEdge;
++import androidx.appcompat.app.AlertDialog;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.graphics.Insets;
++import androidx.core.view.ViewCompat;
++import androidx.core.view.WindowInsetsCompat;
++
++
++
++public class UpdateActivity extends AppCompatActivity {
++    EditText title_input, author_input, pages_input;
++    Button update_button, delete_button;
++
++    String id;
++    String book_title;
++    String book_author;
++    String book_pages;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        EdgeToEdge.enable(this);
++        setContentView(R.layout.activity_update);
++
++        title_input = findViewById(R.id.title_input2);
++        author_input = findViewById(R.id.author_input2);
++        pages_input = findViewById(R.id.pages_input2);
++        update_button = findViewById(R.id.update_button);
++        delete_button = findViewById(R.id.delete_button);
++
++        update_button.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(UpdateActivity.this);
++                myDatabaseHelper.updateData(id, book_title, book_author, book_pages);
++            }
++        });
++
++        delete_button.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                confrimDialog();
++            }
++        });
++
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++            return insets;
++        });
++
++        getIntentData();
++
++    }
++
++    void getIntentData() {
++        if (getIntent().hasExtra("id") && getIntent().hasExtra("title") && getIntent().hasExtra("author") && getIntent().hasExtra("pages")) {
++            id = getIntent().getStringExtra("id");
++            book_title = getIntent().getStringExtra("title");
++            book_author = getIntent().getStringExtra("author");
++            book_pages = getIntent().getStringExtra("pages");
++
++            title_input.setText(book_title);
++            author_input.setText(book_author);
++            pages_input.setText(book_pages);
++        } else {
++            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
++        }
++    }
++
++    void confrimDialog(){
++        AlertDialog.Builder builder = new AlertDialog.Builder(this);
++        builder.setTitle("Delete" + book_title + " ?");
++        builder.setMessage("Are you sure you want to delete " + book_title + " ?");
++        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
++            @Override
++            public void onClick(DialogInterface dialog, int which) {
++                MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(UpdateActivity.this);
++                myDatabaseHelper.deleteOneRow(id);
++                finish();
++            }
++        });
++        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
++            @Override
++            public void onClick(DialogInterface dialog, int which) {
++                Toast.makeText(UpdateActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
++            }
++        });
++        builder.create().show();
++    }
++}
+Index: app/src/main/res/layout/activity_add.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_add.xml b/app/src/main/res/layout/activity_add.xml
+new file mode 100644
+--- /dev/null	(date 1736519621797)
++++ b/app/src/main/res/layout/activity_add.xml	(date 1736519621797)
+@@ -0,0 +1,61 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".AddActivity"
++    android:padding="30dp">
++
++    <EditText
++        android:id="@+id/title_input"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="150dp"
++        android:ems="10"
++        android:hint="Book Title"
++        android:inputType="text"
++        android:minHeight="48dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <EditText
++        android:id="@+id/author_input"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="16dp"
++        android:ems="10"
++        android:hint="Book Author"
++        android:inputType="text"
++        android:minHeight="48dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/title_input" />
++
++    <EditText
++        android:id="@+id/pages_input"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="16dp"
++        android:ems="10"
++        android:hint="Number of Pages"
++        android:inputType="text"
++        android:minHeight="48dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/author_input" />
++
++    <Button
++        android:id="@+id/update_button"
++        android:layout_width="match_parent"
++        android:layout_height="70dp"
++        android:layout_marginTop="40dp"
++        android:text="Add"
++        android:textSize="20sp"
++        android:textAllCaps="false"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/pages_input" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity2.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity2.java
+new file mode 100644
+--- /dev/null	(date 1736526701366)
++++ b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/MainActivity2.java	(date 1736526701366)
+@@ -0,0 +1,138 @@
++package com.thimathi.manahara.sqlite_crud_operations;
++
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.database.Cursor;
++import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
++import android.view.View;
++import android.widget.Toast;
++
++import androidx.activity.EdgeToEdge;
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.appcompat.app.AlertDialog;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.graphics.Insets;
++import androidx.core.view.ViewCompat;
++import androidx.core.view.WindowInsetsCompat;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.google.android.material.floatingactionbutton.FloatingActionButton;
++
++import java.util.ArrayList;
++
++public class MainActivity2 extends AppCompatActivity {
++
++    RecyclerView recycle_view;
++    FloatingActionButton add_button;
++    MyDatabaseHelper myDatabaseHelper;
++    ArrayList<String> book_id, book_title, book_author, book_pages;
++    CustomAdapter customAdapter;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        EdgeToEdge.enable(this);
++        setContentView(R.layout.activity_main2);
++
++        recycle_view = findViewById(R.id.recycle_view);
++        add_button = findViewById(R.id.update_button);
++
++        add_button.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent = new Intent(MainActivity2.this, AddActivity.class);
++                startActivity(intent);
++            }
++        });
++
++        myDatabaseHelper = new MyDatabaseHelper(MainActivity2.this);
++        book_id = new ArrayList<>();
++        book_title = new ArrayList<>();
++        book_author = new ArrayList<>();
++        book_pages = new ArrayList<>();
++
++        displayData();
++
++        customAdapter = new CustomAdapter(MainActivity2.this, this, book_id, book_title, book_author, book_pages);
++        recycle_view.setAdapter(customAdapter);
++        recycle_view.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
++
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++            return insets;
++        });
++    }
++
++    @Override
++    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
++        super.onActivityResult(requestCode, resultCode, data);
++        if (requestCode == 1){
++            recreate();
++        }
++        else {
++            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
++        }
++    }
++
++    void displayData(){
++        Cursor cursor;
++        cursor = myDatabaseHelper.readAllData();
++        if (cursor.getCount() == 0){
++            Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
++        }
++        else {
++            while (cursor.moveToNext()){
++                book_id.add(cursor.getString(0));
++                book_title.add(cursor.getString(1));
++                book_author.add(cursor.getString(2));
++                book_pages.add(cursor.getString(3));
++            }
++        }
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inflater = getMenuInflater();
++        inflater.inflate(R.menu.my_menu, menu);
++        return super.onCreateOptionsMenu(menu);
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
++        if (item.getItemId() == R.id.delete_all){
++            Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
++            myDatabaseHelper.deleteAllData();
++            recreate();
++            Intent intent = new Intent(MainActivity2.this, MainActivity2.class);
++            startActivity(intent);
++            finish();
++        }
++        return super.onOptionsItemSelected(item);
++    }
++
++    void confrimDialog(){
++        AlertDialog.Builder builder = new AlertDialog.Builder(this);
++        builder.setTitle("Delete All");
++        builder.setMessage("Are you sure you want to delete " + book_title + " ?");
++        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
++            @Override
++            public void onClick(DialogInterface dialog, int which) {
++                MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(MainActivity2.this);
++                finish();
++            }
++        });
++        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
++            @Override
++            public void onClick(DialogInterface dialog, int which) {
++                Toast.makeText(MainActivity2.this, "Cancelled", Toast.LENGTH_SHORT).show();
++            }
++        });
++        builder.create().show();
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_add.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_add.xml b/app/src/main/res/drawable/ic_add.xml
+new file mode 100644
+--- /dev/null	(date 1736432009914)
++++ b/app/src/main/res/drawable/ic_add.xml	(date 1736432009914)
+@@ -0,0 +1,5 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#FFFFFF" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
++      
++    <path android:fillColor="@android:color/white" android:pathData="M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
++    
++</vector>
+Index: app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/AddActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/AddActivity.java b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/AddActivity.java
+new file mode 100644
+--- /dev/null	(date 1736519621691)
++++ b/app/src/main/java/com/thimathi/manahara/sqlite_crud_operations/AddActivity.java	(date 1736519621691)
+@@ -0,0 +1,44 @@
++package com.thimathi.manahara.sqlite_crud_operations;
++
++import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++import android.widget.EditText;
++
++import androidx.activity.EdgeToEdge;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.graphics.Insets;
++import androidx.core.view.ViewCompat;
++import androidx.core.view.WindowInsetsCompat;
++
++public class AddActivity extends AppCompatActivity {
++
++    EditText title_input, author_input, pages_input;
++    Button add_button;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        EdgeToEdge.enable(this);
++        setContentView(R.layout.activity_add);
++
++        title_input = findViewById(R.id.title_input);
++        author_input = findViewById(R.id.author_input);
++        pages_input = findViewById(R.id.pages_input);
++        add_button = findViewById(R.id.update_button);
++
++        add_button.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(AddActivity.this);
++                myDatabaseHelper.addBook(title_input.getText().toString().trim(),author_input.getText().toString().trim(), Integer.parseInt(pages_input.getText().toString().trim()));
++            }
++        });
++
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++            return insets;
++        });
++    }
++}
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\r\nagp = \"8.7.2\"\r\njunit = \"4.13.2\"\r\njunitVersion = \"1.2.1\"\r\nespressoCore = \"3.6.1\"\r\nappcompat = \"1.7.0\"\r\nmaterial = \"1.12.0\"\r\nconstraintlayout = \"2.2.0\"\r\nnavigationFragment = \"2.8.5\"\r\nnavigationUi = \"2.8.5\"\r\n\r\n[libraries]\r\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\r\next-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\r\nespresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\r\nappcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\r\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\r\nconstraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\r\nnavigation-fragment = { group = \"androidx.navigation\", name = \"navigation-fragment\", version.ref = \"navigationFragment\" }\r\nnavigation-ui = { group = \"androidx.navigation\", name = \"navigation-ui\", version.ref = \"navigationUi\" }\r\n\r\n[plugins]\r\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision 4bf2d3270919af3b1eb88d7e530054439fe84aa9)
++++ b/gradle/libs.versions.toml	(date 1736431452767)
+@@ -8,6 +8,8 @@
+ constraintlayout = "2.2.0"
+ navigationFragment = "2.8.5"
+ navigationUi = "2.8.5"
++activity = "1.9.3"
++recyclerview = "1.3.2"
+ 
+ [libraries]
+ junit = { group = "junit", name = "junit", version.ref = "junit" }
+@@ -18,6 +20,8 @@
+ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+ navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
++activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
++recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+ 
+ [plugins]
+ android-application = { id = "com.android.application", version.ref = "agp" }
